@@ -19,7 +19,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en' className={Pretendard.className}>
-      <body className='bg-white text-black'>
+      <body className='bg-white text-black h-screen flex flex-col'>
         <header className='text-xl p-4 flex justify-between bg-white fixed w-full'>
           <Link className='font-bold' href='/'>
             noma's Devlog
@@ -31,7 +31,7 @@ export default function RootLayout({
             <Link href='/contact'>contact</Link>
           </nav>
         </header>
-        <main className='pt-20 bg-white'>{children}</main>
+        <main className='pt-20 bg-white flex-1'>{children}</main>
         <footer className='bg-gray-400 p-4 text-white text-center'>
           Copyright 2023.noma. All rights reserved.
         </footer>
