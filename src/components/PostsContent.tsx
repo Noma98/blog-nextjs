@@ -3,6 +3,7 @@
 import { Post } from '@/service/posts';
 import React, { useState } from 'react';
 import Image from '../../node_modules/next/image';
+import { useRouter } from '../../node_modules/next/navigation';
 
 type Filter = 'all posts' | 'my story' | 'frontend' | 'backend' | 'javascript';
 type Props = {
@@ -10,11 +11,14 @@ type Props = {
 };
 function PostsContent({ posts }: Props) {
   const [filter, setFilter] = useState<Filter>('all posts');
+  const router = useRouter();
 
   const onClickCategory: React.MouseEventHandler<HTMLUListElement> = (e) => {
     setFilter((e.target as HTMLElement).textContent as Filter);
   };
-
+  const onClickPost = (path: string) => {
+    router.push(`/posts/${path}`);
+  };
   return (
     <div className='flex flex-col-reverse sm:flex-row'>
       <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 p-4 gap-3 sm:basis-3/4'>
@@ -24,6 +28,7 @@ function PostsContent({ posts }: Props) {
             <div
               key={idx}
               className='flex flex-col max-h-50 items-center shadow-md shadow-slate-200 rounded p-4 m cursor-pointer hover:-translate-y-1'
+              onClick={() => onClickPost(path)}
             >
               <Image
                 src={`/images/home/${path}.png`}
