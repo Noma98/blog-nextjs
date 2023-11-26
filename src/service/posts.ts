@@ -15,3 +15,7 @@ export async function getPosts(): Promise<Post[]> {
   const data = await fs.readFile(filePath, 'utf-8');
   return JSON.parse(data);
 }
+export async function getPostDetail(path: string): Promise<Post> {
+  const posts = await getPosts();
+  return posts.filter((post) => post.path === path)[0];
+}
