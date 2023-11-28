@@ -15,7 +15,13 @@ function Contact() {
         href='https://github.com/Noma98'
         className='inline-block'
       >
-        <Image src={Github} width={50} height={50} className='mx-auto my-4' />
+        <Image
+          src={Github}
+          width={50}
+          height={50}
+          className='mx-auto my-4'
+          alt='github_logo'
+        />
       </a>
       <h2 className='font-bold text-xl mt-8'>Or Send me an E-mail</h2>
       <EmailForm />

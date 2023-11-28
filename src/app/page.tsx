@@ -17,7 +17,7 @@ export default async function Home() {
           height={200}
           className='rounded-full my-8'
         />
-        <p className='text-2xl font-bold '>Hi, I'm noma</p>
+        <p className='text-2xl font-bold '>Hi, I&apos;m noma</p>
         <p className='text-lg '>Front-end engineer</p>
         <button className='bg-blue-600 px-4 py-2 mt-4 text-white font-bold border-0 rounded-md'>
           Contact Me

@@ -11,19 +11,18 @@ function MarkdownContent({ data }: Props) {
   return (
     <Markdown
       className='prose'
-      children={data}
       components={{
-        code(props: any) {
-          const { children, className, node, ...rest } = props;
+        code({ children, className, node, ...rest }: any) {
           const match = /language-(\w+)/.exec(className || '');
           return match ? (
             <SyntaxHighlighter
               {...rest}
               PreTag='div'
-              children={String(children).replace(/\n$/, '')}
               language={match[1]}
               style={dark}
-            />
+            >
+              {String(children).replace(/\n$/, '')}
+            </SyntaxHighlighter>
           ) : (
             <code {...rest} className={className}>
               {children}
@@ -31,7 +30,9 @@ function MarkdownContent({ data }: Props) {
           );
         },
       }}
-    />
+    >
+      {data}
+    </Markdown>
   );
 }
 

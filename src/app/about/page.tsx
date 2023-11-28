@@ -11,8 +11,9 @@ export default async function About() {
         width={200}
         height={200}
         className='rounded-full my-2'
+        alt='profile'
       />
-      <h2 className='font-bold text-xl'>Hi, I'm noma</h2>
+      <h2 className='font-bold text-xl'>Hi, I&apos;m noma</h2>
       <p className='text-md font-semibold'>Front-end Engineer</p>
       <p className='text-xs'>
         Lorem ipsum dolor sit amet consectetur adipisicing elit.

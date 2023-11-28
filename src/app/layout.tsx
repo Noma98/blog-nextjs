@@ -22,7 +22,7 @@ export default function RootLayout({
       <body className='bg-white text-black h-screen flex flex-col'>
         <header className='text-xl p-4 flex justify-between bg-white fixed w-full'>
           <Link className='font-bold' href='/'>
-            noma's Devlog
+            noma&apos;s Devlog
           </Link>
           <nav className='flex gap-4 text-base'>
             <Link href='/'>home</Link>
