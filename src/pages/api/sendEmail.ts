@@ -1,8 +1,4 @@
-import {
-  NextApiRequest,
-  NextApiResponse,
-} from '../../../node_modules/next/dist/shared/lib/utils';
-import { NextApiHandler } from 'next';
+import { NextApiHandler, NextApiRequest, NextApiResponse } from 'next';
 
 import { sendMail } from '@/service/mailService';
 

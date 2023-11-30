@@ -1,9 +1,10 @@
 'use client';
 
-import { Post } from '@/service/posts';
 import React, { useState } from 'react';
-import Image from '../../node_modules/next/image';
-import { useRouter } from '../../node_modules/next/navigation';
+import Image from 'next/image';
+import { useRouter } from 'next/navigation';
+
+import { Post } from '@/service/posts';
 
 type Filter = 'all posts' | 'my story' | 'frontend' | 'backend' | 'javascript';
 type Props = {

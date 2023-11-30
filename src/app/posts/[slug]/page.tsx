@@ -1,5 +1,5 @@
 import React from 'react';
-import Image from '../../../../node_modules/next/image';
+import Image from 'next/image';
 import path from 'path';
 import { promises as fs } from 'fs';
 

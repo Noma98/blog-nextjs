@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
-import Image from '../../node_modules/next/image';
-import { useRouter } from '../../node_modules/next/navigation';
+import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
 import { Post } from '@/service/posts';
 
