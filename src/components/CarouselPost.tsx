@@ -1,9 +1,10 @@
 'use client';
 
+import React from 'react';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-import React from 'react';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
 import { Post } from '@/service/posts';
 
@@ -11,6 +12,8 @@ type Props = {
   posts: Post[];
 };
 function CarouselPost({ posts }: Props) {
+  const router = useRouter();
+
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
@@ -36,9 +39,10 @@ function CarouselPost({ posts }: Props) {
       className='mb-10 min-h-100 p-4'
     >
       {posts.map((post, idx) => (
-        <div
+        <button
+          onClick={() => router.push(`/posts/${post.path}`)}
           key={idx}
-          className='flex flex-col items-center shadow-md shadow-slate-300 rounded p-4 mr-4 h-full'
+          className='flex flex-col items-center shadow-md shadow-slate-300 rounded p-4 mr-4 h-full hover:opacity-80'
         >
           <Image
             src={`/images/home/${post.path}.png`}
@@ -55,7 +59,7 @@ function CarouselPost({ posts }: Props) {
           <span className='rounded-md px-2 py-1 text-xs mt-4 bg-yellow-200'>
             {post.category}
           </span>
-        </div>
+        </button>
       ))}
     </Carousel>
   );
