@@ -1,9 +1,10 @@
 import React from 'react';
+import Image from '../../../../node_modules/next/image';
 import path from 'path';
 import { promises as fs } from 'fs';
-import Image from '../../../../node_modules/next/image';
 
 import MarkdownContent from '@/components/MarkdownContent';
+import PostNavigator from '@/components/PostNavigator';
 import { getPostDetail, getPosts } from '@/service/posts';
 
 type Props = {
@@ -12,12 +13,11 @@ type Props = {
   };
 };
 async function Post({ params }: Props) {
-  const {
-    title,
-    date,
-    description,
-    path: dataPath,
-  } = await getPostDetail(params.slug);
+  const currentPost = await getPostDetail(params.slug);
+  const { title, date, description, path: dataPath } = currentPost;
+
+  const postArr = await getPosts();
+  const currentIdx = postArr.findIndex((v) => v.title === title);
   const filePath = path.join(process.cwd(), 'data', `${dataPath}.md`);
   const mdStr = await fs.readFile(filePath, 'utf-8');
 
@@ -31,7 +31,7 @@ async function Post({ params }: Props) {
         objectFit='contain'
         className='rounded-t-xl object-cover w-full h-40'
       />
-      <div className='bg-gray-50 p-4 relative rounded-b-xl mb-8'>
+      <div className='bg-gray-50 relative p-8'>
         <h2 className='text-2xl font-bold'>{title}</h2>
         <p className='text-sm after:w-1/6 after:h-0.5 after:my-3 after:bg-blue-500 after:block'>
           {description}
@@ -41,6 +41,7 @@ async function Post({ params }: Props) {
         </span>
         <MarkdownContent data={mdStr} />
       </div>
+      <PostNavigator postArr={postArr} currentIdx={currentIdx} />
     </div>
   );
 }
