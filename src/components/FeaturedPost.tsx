@@ -33,7 +33,7 @@ function FeaturedPost({
         alt='post_thumbnail'
         width={400}
         height={300}
-        className='w-full'
+        className='w-full z-0'
       />
       <span className='text-xs align-bottom mt-2 ml-auto mr-2 text-gray-400'>
         {date}

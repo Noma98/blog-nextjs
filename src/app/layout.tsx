@@ -20,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang='en' className={Pretendard.className}>
       <body className='bg-white text-black h-screen flex flex-col'>
-        <header className='text-xl p-4 flex justify-between bg-white fixed w-full'>
+        <header className='text-xl p-4 flex justify-between bg-white w-full fixed z-50'>
           <Link className='font-bold' href='/'>
             noma&apos;s Devlog
           </Link>
