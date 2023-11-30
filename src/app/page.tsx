@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 import Profile from '@public/images/home/profile.jpg';
 import { getPosts } from '@/service/posts';
@@ -20,9 +21,12 @@ export default async function Home() {
         />
         <p className='text-2xl font-bold '>Hi, I&apos;m noma</p>
         <p className='text-lg '>Front-end engineer</p>
-        <button className='bg-blue-600 px-4 py-2 mt-4 text-white font-bold border-0 rounded-md'>
+        <Link
+          href='/contact'
+          className='bg-blue-600 px-4 py-2 mt-4 text-white font-bold border-0 rounded-md'
+        >
           Contact Me
-        </button>
+        </Link>
       </div>
       <div className='mt-12 px-4'>
         <h2 className='font-bold text-xl'>Featured Posts</h2>
