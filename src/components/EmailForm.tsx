@@ -50,6 +50,7 @@ function EmailForm() {
         <input
           name='email'
           type='email'
+          value={email}
           className='w-full rounded-md outline-none p-2 mb-2'
           onChange={onChange}
         />
@@ -62,6 +63,7 @@ function EmailForm() {
         <input
           name='subject'
           type='text'
+          value={subject}
           className='w-full rounded-md outline-none p-2 mb-2'
           onChange={onChange}
         />
@@ -74,6 +76,7 @@ function EmailForm() {
         <textarea
           name='message'
           id='message'
+          value={message}
           className='w-full rounded-md outline-none p-2 resize-none'
           onChange={onChange}
         />
