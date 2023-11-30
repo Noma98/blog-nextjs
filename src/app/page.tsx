@@ -34,7 +34,7 @@ export default async function Home() {
           {posts
             .filter((post) => post.featured)
             .map((post, idx) => (
-              <FeaturedPost idx={idx} {...post} />
+              <FeaturedPost idx={idx} {...post} key={idx} />
             ))}
         </div>
         <h2 className='font-bold text-xl mt-8'>You may like</h2>
