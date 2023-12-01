@@ -21,9 +21,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en' className={Pretendard.className}>
-      <body className='bg-white text-black h-screen flex flex-col'>
+      <body className='flex flex-col w-full max-w-screen-2xl mx-auto '>
         <Header />
-        <main className='pt-20 bg-white flex-1'>{children}</main>
+        <main className='pt-20 grow'>{children}</main>
         <Footer />
       </body>
     </html>
