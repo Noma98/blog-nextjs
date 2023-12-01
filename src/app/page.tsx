@@ -10,7 +10,7 @@ export default async function Home() {
   const posts = await getPosts();
 
   return (
-    <div className='flex flex-col'>
+    <section className='flex flex-col'>
       <div className='flex flex-col items-center'>
         <Image
           src={Profile}
@@ -40,6 +40,6 @@ export default async function Home() {
         <h2 className='font-bold text-xl mt-8'>You may like</h2>
         <CarouselPost posts={posts} />
       </div>
-    </div>
+    </section>
   );
 }

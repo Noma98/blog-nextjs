@@ -5,7 +5,7 @@ import Profile from '@public/images/home/profile.jpg';
 
 export default async function About() {
   return (
-    <div className='flex flex-col items-center'>
+    <section className='flex flex-col items-center'>
       <Image
         src={Profile}
         width={200}
@@ -43,6 +43,6 @@ export default async function About() {
           <br /> Git, Github, Figma, Slack, Notion, Teams
         </p>
       </div>
-    </div>
+    </section>
   );
 }

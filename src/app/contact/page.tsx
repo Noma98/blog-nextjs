@@ -7,7 +7,7 @@ import Github from '@public/images/contact/github-logo.png';
 
 function Contact() {
   return (
-    <div className='text-center'>
+    <section className='text-center'>
       <h2 className='font-bold text-xl mt-4'>Contact me</h2>
       <p className='text-sm'>wiostz98kr@gmail.com</p>
       <a
@@ -25,7 +25,7 @@ function Contact() {
       </a>
       <h2 className='font-bold text-xl mt-8'>Or Send me an E-mail</h2>
       <EmailForm />
-    </div>
+    </section>
   );
 }
 

@@ -18,11 +18,11 @@ async function Post({ params }: Props) {
 
   const postArr = await getPosts();
   const currentIdx = postArr.findIndex((v) => v.title === title);
-  const filePath = path.join(process.cwd(), 'data', `${dataPath}.md`);
+  const filePath = path.join(process.cwd(), 'data/posts', `${dataPath}.md`);
   const mdStr = await fs.readFile(filePath, 'utf-8');
 
   return (
-    <div className='px-10'>
+    <article className='px-10'>
       <Image
         src={`/images/home/${dataPath}.png`}
         width={2720}
@@ -42,7 +42,7 @@ async function Post({ params }: Props) {
         <MarkdownContent data={mdStr} />
       </div>
       <PostNavigator postArr={postArr} currentIdx={currentIdx} />
-    </div>
+    </article>
   );
 }
 export async function generateStaticParams() {

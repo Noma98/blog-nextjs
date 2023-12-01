@@ -6,9 +6,9 @@ async function Posts() {
   const posts = await getPosts();
 
   return (
-    <div className='sm:flex'>
+    <section className='sm:flex'>
       <PostsContent posts={posts} />
-    </div>
+    </section>
   );
 }
 
