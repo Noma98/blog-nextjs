@@ -29,7 +29,7 @@ function FeaturedPost({
       className='flex flex-col items-center shadow-md shadow-slate-200 rounded p-4 hover:opacity-80'
     >
       <Image
-        src={`/images/home/${path}.png`}
+        src={`/images/posts/${path}.png`}
         alt='post_thumbnail'
         width={400}
         height={300}

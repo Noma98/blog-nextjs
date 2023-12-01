@@ -45,7 +45,7 @@ function CarouselPost({ posts }: Props) {
           className='flex flex-col items-center shadow-md shadow-slate-300 rounded p-4 mr-4 h-full hover:opacity-80'
         >
           <Image
-            src={`/images/home/${post.path}.png`}
+            src={`/images/posts/${post.path}.png`}
             alt='post_thumbnail'
             width={300}
             height={200}

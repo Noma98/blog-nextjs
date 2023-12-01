@@ -32,7 +32,7 @@ function PostsContent({ posts }: Props) {
               onClick={() => onClickPost(path)}
             >
               <Image
-                src={`/images/home/${path}.png`}
+                src={`/images/posts/${path}.png`}
                 alt='post_thumbnail'
                 width={400}
                 height={300}

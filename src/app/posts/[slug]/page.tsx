@@ -24,7 +24,7 @@ async function Post({ params }: Props) {
   return (
     <article className='px-10'>
       <Image
-        src={`/images/home/${dataPath}.png`}
+        src={`/images/posts/${dataPath}.png`}
         width={2720}
         height={320}
         alt='post_banner'

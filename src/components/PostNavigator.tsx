@@ -26,7 +26,7 @@ function PostNavigator({ postArr, currentIdx }: Props) {
       <div className='flex flex-col md:flex-row w-full'>
         <Image
           alt='post_thumbnail'
-          src={`/images/home/${
+          src={`/images/posts/${
             currentIdx === 0 ? 'no-image' : postArr[currentIdx - 1].path
           }.png`}
           height={300}
@@ -35,7 +35,7 @@ function PostNavigator({ postArr, currentIdx }: Props) {
         />
         <Image
           alt='post_thumbnail'
-          src={`/images/home/${
+          src={`/images/posts/${
             currentIdx === postArr.length - 1
               ? 'no-image'
               : postArr[currentIdx + 1].path
