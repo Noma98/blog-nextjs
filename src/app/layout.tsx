@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
-import Link from 'next/link';
+
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 import './globals.css';
 
 const Pretendard = localFont({
@@ -20,21 +22,9 @@ export default function RootLayout({
   return (
     <html lang='en' className={Pretendard.className}>
       <body className='bg-white text-black h-screen flex flex-col'>
-        <header className='text-xl p-4 flex justify-between bg-white w-full fixed z-50'>
-          <Link className='font-bold' href='/'>
-            noma&apos;s Devlog
-          </Link>
-          <nav className='flex gap-4 text-base'>
-            <Link href='/'>home</Link>
-            <Link href='/about'>about</Link>
-            <Link href='/posts'>posts</Link>
-            <Link href='/contact'>contact</Link>
-          </nav>
-        </header>
+        <Header />
         <main className='pt-20 bg-white flex-1'>{children}</main>
-        <footer className='bg-gray-400 p-4 text-white text-center'>
-          Copyright 2023.noma. All rights reserved.
-        </footer>
+        <Footer />
       </body>
     </html>
   );
