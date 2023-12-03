@@ -1,9 +1,9 @@
 import PostsContent from '@/components/PostsContent';
-import { getPosts } from '@/service/posts';
+import { getAllPosts } from '@/service/posts';
 import React from 'react';
 
 async function Posts() {
-  const posts = await getPosts();
+  const posts = await getAllPosts();
 
   return (
     <section className='sm:flex'>

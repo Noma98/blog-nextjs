@@ -1,10 +1,10 @@
-import { getPosts } from '@/service/posts';
+import { getAllPosts } from '@/service/posts';
 import CarouselPost from '@/components/CarouselPost';
 import FeaturedPost from '@/components/FeaturedPost';
 import Hero from '@/components/Hero';
 
 export default async function Home() {
-  const posts = await getPosts();
+  const posts = await getAllPosts();
 
   return (
     <div className='flex flex-col'>

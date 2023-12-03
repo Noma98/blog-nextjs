@@ -5,7 +5,7 @@ import { promises as fs } from 'fs';
 
 import MarkdownContent from '@/components/MarkdownContent';
 import PostNavigator from '@/components/PostNavigator';
-import { getPostDetail, getPosts } from '@/service/posts';
+import { getPostDetail, getAllPosts } from '@/service/posts';
 
 type Props = {
   params: {
@@ -16,7 +16,7 @@ async function Post({ params }: Props) {
   const currentPost = await getPostDetail(params.slug);
   const { title, date, description, path: dataPath } = currentPost;
 
-  const postArr = await getPosts();
+  const postArr = await getAllPosts();
   const currentIdx = postArr.findIndex((v) => v.title === title);
   const filePath = path.join(process.cwd(), 'data/posts', `${dataPath}.md`);
   const mdStr = await fs.readFile(filePath, 'utf-8');
@@ -46,7 +46,7 @@ async function Post({ params }: Props) {
   );
 }
 export async function generateStaticParams() {
-  const posts = await getPosts();
+  const posts = await getAllPosts();
   return posts.map((post) => ({
     slug: post.path,
   }));
