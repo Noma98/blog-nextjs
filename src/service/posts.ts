@@ -16,6 +16,11 @@ export async function getAllPosts(): Promise<Post[]> {
     .then<Post[]>(JSON.parse)
     .then((posts) => posts.sort((a, b) => (a.date > b.date ? -1 : 1)));
 }
+export async function getFeatuerdPosts() {
+  const posts = await getAllPosts();
+  return posts.filter((post) => post.featured);
+}
+
 export async function getPostDetail(path: string): Promise<Post> {
   const posts = await getAllPosts();
   return posts.filter((post) => post.path === path)[0];

@@ -10,14 +10,8 @@ export default async function Home() {
     <div className='flex flex-col'>
       <Hero />
       <div className='mt-12 px-4'>
-        <h2 className='font-bold text-xl'>Featured Posts</h2>
-        <div className='my-4 grid gap-4 p-2 grid-cols-1 md:grid-cols-3'>
-          {posts
-            .filter((post) => post.featured)
-            .map((post, idx) => (
-              <FeaturedPost idx={idx} {...post} key={idx} />
-            ))}
-        </div>
+        {/* @ts-expect-error Server Component*/}
+        <FeaturedPost />
         <h2 className='font-bold text-xl mt-8'>You may like</h2>
         <CarouselPost posts={posts} />
       </div>
