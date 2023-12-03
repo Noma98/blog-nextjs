@@ -20,6 +20,10 @@ export async function getFeatuerdPosts() {
   const posts = await getAllPosts();
   return posts.filter((post) => post.featured);
 }
+export async function getNonFeatuerdPosts() {
+  const posts = await getAllPosts();
+  return posts.filter((post) => !post.featured);
+}
 
 export async function getPostDetail(path: string): Promise<Post> {
   const posts = await getAllPosts();
