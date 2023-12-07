@@ -1,5 +1,8 @@
 'use client';
-import React, { useState } from 'react';
+import React, { ChangeEvent, FormEvent, useState } from 'react';
+
+import Banner, { BannerData } from '@/components/Banner';
+import LoadingView from '@/components/LoadingView';
 
 function EmailForm() {
   const initialInputValues = {
@@ -9,16 +12,17 @@ function EmailForm() {
   };
   const [inputValues, setInputValues] = useState(initialInputValues);
   const { email, subject, message } = inputValues;
+  const [banner, setBanner] = useState<BannerData | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const onChange: React.ChangeEventHandler<
-    HTMLInputElement | HTMLTextAreaElement
-  > = (e) => {
+  const onChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setInputValues((prev) => ({ ...prev, [name]: value }));
   };
 
-  const onSubmit: React.FormEventHandler<HTMLFormElement> = async (e) => {
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setIsLoading(true);
     try {
       await fetch('/api/sendEmail', {
         method: 'POST',
@@ -27,10 +31,22 @@ function EmailForm() {
         },
         body: JSON.stringify(inputValues),
       });
-      alert('이메일을 전송하였습니다.');
+      setIsLoading(false);
+      setBanner({ message: '이메일 전송에 성공하였습니다.', state: 'success' });
+      setTimeout(() => {
+        setBanner(null);
+      }, 3000);
       setInputValues(initialInputValues);
     } catch (err) {
-      alert(`이메일 전송에 실패하였습니다.\n${err}`);
+      setIsLoading(false);
+      setBanner({
+        message: '이메일 전송에 실패하였습니다.',
+        state: 'fail',
+      });
+      setTimeout(() => {
+        setBanner(null);
+      }, 3000);
+      console.error(err);
     }
   };
 
@@ -40,6 +56,8 @@ function EmailForm() {
 
   return (
     <div className='bg-blue-500  mt-8 py-4'>
+      {isLoading && <LoadingView />}
+      {banner && <Banner banner={banner} />}
       <form className=' p-4 mx-auto max-w-md ' onSubmit={onSubmit}>
         <label
           htmlFor='email'
@@ -51,6 +69,8 @@ function EmailForm() {
           name='email'
           type='email'
           value={email}
+          required
+          autoFocus
           className='w-full rounded-md outline-none p-2 mb-2'
           onChange={onChange}
         />
@@ -64,6 +84,7 @@ function EmailForm() {
           name='subject'
           type='text'
           value={subject}
+          required
           className='w-full rounded-md outline-none p-2 mb-2'
           onChange={onChange}
         />
@@ -76,6 +97,8 @@ function EmailForm() {
         <textarea
           name='message'
           id='message'
+          rows={10}
+          required
           value={message}
           className='w-full rounded-md outline-none p-2 resize-none'
           onChange={onChange}
