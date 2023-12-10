@@ -7,9 +7,9 @@ export default async function Home() {
     <div className='flex flex-col'>
       <Hero />
       <div className='mt-12 px-4'>
-        {/* @ts-expect-error Server Component*/}
+        {/* @ts-ignore*/}
         <FeaturedPost />
-        {/* @ts-expect-error Server Component*/}
+        {/* @ts-ignore*/}
         <CarouselPost />
       </div>
     </div>

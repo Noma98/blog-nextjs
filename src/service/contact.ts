@@ -1,4 +1,14 @@
+import { Metadata } from 'next';
+
 import { EmailData } from '@/service/email';
+
+export const metadata: Metadata = {
+  title: 'Contact Me',
+  description: "Noma's contact information",
+  openGraph: {
+    title: "Contact Me | Noma's Tech Log",
+  },
+};
 
 export async function contactMe(email: EmailData) {
   // 클라이언트에서 실행

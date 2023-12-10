@@ -1,4 +1,5 @@
 import React from 'react';
+import { Metadata } from 'next';
 import { AiFillGithub, AiFillLinkedin, AiFillYoutube } from 'react-icons/ai';
 
 import EmailForm from '@/components/EmailForm';
@@ -11,6 +12,14 @@ const LINKS = [
   { icon: <AiFillLinkedin />, url: '' },
   { icon: <AiFillYoutube />, url: '' },
 ];
+export const metadata: Metadata = {
+  title: 'Contact Me',
+  description: `Contact me!`,
+  openGraph: {
+    title: "Contact | Noma's Tech Log",
+  },
+};
+
 function Contact() {
   return (
     <section className='text-center'>

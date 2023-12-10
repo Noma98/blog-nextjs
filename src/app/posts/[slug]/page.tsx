@@ -1,4 +1,5 @@
 import React from 'react';
+import { Metadata } from 'next';
 import Image from 'next/image';
 
 import PostNavigator from '@/components/PostNavigator';
@@ -28,5 +29,18 @@ async function Post({ params: { slug } }: Props) {
       <PostNavigator prev={prev} next={next} />
     </article>
   );
+}
+
+export async function generateMetadata({
+  params: { slug },
+}: Props): Promise<Metadata> {
+  const { title, description } = await getPostData(slug);
+  return {
+    title,
+    description,
+    openGraph: {
+      images: [`/images/posts/${slug}.png`],
+    },
+  };
 }
 export default Post;

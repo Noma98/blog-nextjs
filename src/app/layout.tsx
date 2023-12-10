@@ -10,8 +10,16 @@ const Pretendard = localFont({
 });
 
 export const metadata: Metadata = {
-  title: `Noma's blog`,
-  description: `Frontend developer Noma's Tec blog`,
+  title: {
+    default: "Noma's Tech Log",
+    template: "Noma's Tech Log | %s",
+  },
+  description: `Frontend developer Noma's Tech blog`,
+  openGraph: {
+    title: "Noma's Tech Log",
+    description: "Frontend developer Noma's Tech blog",
+    images: ['/images/home/profile.jpg'],
+  },
 };
 
 export default function RootLayout({
