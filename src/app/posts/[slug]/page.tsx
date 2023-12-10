@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 import PostNavigator from '@/components/PostNavigator';
 import PostContent from '@/components/PostContent';
-import { getPostData } from '@/service/posts';
+import { getFeatuerdPosts, getPostData } from '@/service/posts';
 
 type Props = {
   params: {
@@ -42,5 +42,12 @@ export async function generateMetadata({
       images: [`/images/posts/${slug}.png`],
     },
   };
+}
+//feactured 포스팅만 정적으로 미리 만들어 놓고 싶다면 아래처럼 gernerateStaticParams를 사용해 정의해주면 됨.
+export async function generateStaticParams() {
+  const posts = await getFeatuerdPosts();
+  return posts.map((post) => ({
+    slug: post.path,
+  }));
 }
 export default Post;
