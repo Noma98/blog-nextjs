@@ -3,15 +3,16 @@ import React, { ChangeEvent, FormEvent, useState } from 'react';
 
 import Banner, { BannerData } from '@/components/Banner';
 import LoadingView from '@/components/LoadingView';
+import { contactMe } from '@/service/contact';
 
 function EmailForm() {
-  const initialInputValues = {
-    email: '',
+  const DEFAULT_DATA = {
+    from: '',
     subject: '',
     message: '',
   };
-  const [inputValues, setInputValues] = useState(initialInputValues);
-  const { email, subject, message } = inputValues;
+  const [inputValues, setInputValues] = useState(DEFAULT_DATA);
+  const { from, subject, message } = inputValues;
   const [banner, setBanner] = useState<BannerData | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -23,35 +24,32 @@ function EmailForm() {
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsLoading(true);
-    try {
-      await fetch('/api/sendEmail', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(inputValues),
+
+    contactMe(inputValues)
+      .then(() => {
+        setBanner({
+          message: '이메일 전송에 성공하였습니다.',
+          state: 'success',
+        });
+        setInputValues(DEFAULT_DATA);
+      })
+      .catch((err) => {
+        setBanner({
+          message: '이메일 전송에 실패하였습니다.',
+          state: 'fail',
+        });
+        console.error(err);
+      })
+      .finally(() => {
+        setIsLoading(false);
+        setTimeout(() => {
+          setBanner(null);
+        }, 3000);
       });
-      setIsLoading(false);
-      setBanner({ message: '이메일 전송에 성공하였습니다.', state: 'success' });
-      setTimeout(() => {
-        setBanner(null);
-      }, 3000);
-      setInputValues(initialInputValues);
-    } catch (err) {
-      setIsLoading(false);
-      setBanner({
-        message: '이메일 전송에 실패하였습니다.',
-        state: 'fail',
-      });
-      setTimeout(() => {
-        setBanner(null);
-      }, 3000);
-      console.error(err);
-    }
   };
 
   const getIsActive = (): boolean => {
-    return Boolean(email && subject && message);
+    return Boolean(from && subject && message);
   };
 
   return (
@@ -66,9 +64,9 @@ function EmailForm() {
           Your Email
         </label>
         <input
-          name='email'
+          name='from'
           type='email'
-          value={email}
+          value={from}
           required
           autoFocus
           className='w-full rounded-md outline-none p-2 mb-2'
